@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 public class TelegramBotUpdatesListener implements UpdatesListener {
 
     private Logger logger = LoggerFactory.getLogger(TelegramBotUpdatesListener.class);
-    final private NotificationTaskService notificationTaskService;
+    private final NotificationTaskService notificationTaskService;
 
     @Autowired
     private TelegramBot telegramBot;
@@ -75,8 +75,8 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
     public void sendReminders() {
         LocalDateTime current = LocalDateTime.now().truncatedTo(ChronoUnit.MINUTES);
         List<NotificationTask> remindersList = notificationTaskService.findNotificationTasksByTaskDate(current);
-        remindersList.forEach((NotificationTask -> {
-            sendMessage(NotificationTask.getChatId(),NotificationTask.getTaskText());
+        remindersList.forEach((notificationTask -> {
+            sendMessage(notificationTask.getChatId(),notificationTask.getTaskText());
         }));
     }
 }
