@@ -14,7 +14,7 @@ public class NotificationTaskService {
     public NotificationTaskService(NotificationTaskRepository notificationTaskRepository) {
         this.notificationTaskRepository = notificationTaskRepository;
     }
-    public NotificationTask addTask(Long chatId, String taskText, String date) {
+    public NotificationTask addTask(Long chatId, String date, String taskText) {
         LocalDateTime taskDate = LocalDateTime.parse(date, DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm"));
         NotificationTask task = new NotificationTask();
         task.setChatId(chatId);

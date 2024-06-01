@@ -50,7 +50,7 @@ public class TelegramBotUpdatesListener implements UpdatesListener {
                             "Введи дату, время и название напоминания в формате 01.01.2025 20:00 Сделать домашнюю работу " +
                             "и я пришлю тебе напоминание в 20:00 1 января 2025 года с текстом “Сделать домашнюю работу”");
                 } else{
-                    Pattern pattern = Pattern.compile("([0-9.:\\s]{16})(\\s)(\\W+)");
+                    Pattern pattern = Pattern.compile("([0-9.:\\s]{16})(\\s)([\\W+]+)");
                     Matcher matcher = pattern.matcher(message);
                     if (matcher.matches()) {
                         String date = matcher.group(1);
